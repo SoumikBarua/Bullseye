@@ -31,11 +31,26 @@ class ViewController: UIViewController {
         
         totalScore += points
         
+        let alertTitle: String
+        if difference == 0 {
+            alertTitle =  "Perfect!"
+        } else if difference < 5 {
+            alertTitle = "You almost had it!"
+        } else if difference < 10 {
+            alertTitle = "Pretty good!"
+        } else if difference < 15 {
+            alertTitle = "Could be better"
+        } else if difference < 25 {
+            alertTitle = "A little far off"
+        } else {
+            alertTitle = "Not even close"
+        }
+        
         let message = "You scored \(points) points!"
         
         //let message = "The value of the slider is \(currentValue)" + "\nThe target value is \(targetValue)"
         
-        let alert = UIAlertController(title: "Hey, user", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         
