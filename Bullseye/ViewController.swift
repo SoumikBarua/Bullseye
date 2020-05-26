@@ -22,18 +22,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        startNewRound()
+        startNewGame()
     }
 
     @IBAction func showAlert() {
         let difference = abs(targetValue - currentValue)
-        let points = 100 - difference
-        
-        totalScore += points
+        var points = 100 - difference
         
         let alertTitle: String
         if difference == 0 {
             alertTitle =  "Perfect!"
+            points += 100
+        } else if difference == 1 {
+            alertTitle = "You were only off by one!"
+            points += 50
         } else if difference < 5 {
             alertTitle = "You almost had it!"
         } else if difference < 10 {
@@ -46,19 +48,20 @@ class ViewController: UIViewController {
             alertTitle = "Not even close"
         }
         
+        totalScore += points
+        
         let message = "You scored \(points) points!"
         
         //let message = "The value of the slider is \(currentValue)" + "\nThe target value is \(targetValue)"
         
         let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .default, handler: { _ in self.startNewRound()})
         
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
         
-        startNewRound()
     }
     
     @IBAction func sliderMoved(_ slider: UISlider){
@@ -79,6 +82,13 @@ class ViewController: UIViewController {
         targetLabel.text = String(targetValue)
         scoreLabel.text = String(totalScore)
         roundsLabel.text = String(totalRounds)
+    }
+    
+    
+    @IBAction func startNewGame(){
+        totalScore = 0
+        totalRounds = 0
+        startNewRound()
     }
     
 }
