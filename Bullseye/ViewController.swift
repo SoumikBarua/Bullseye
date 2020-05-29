@@ -101,6 +101,14 @@ class ViewController: UIViewController {
         slider.value = Float(currentValue)
         totalRounds += 1
         updateLabels()
+        
+        // To animate a crossfade when starting a new round
+        let transition = CATransition()
+        transition.type =  CATransitionType.fade
+        transition.duration = 1
+        
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        view.layer.add(transition, forKey: nil)
     }
     
     // Update the labels whenever the values update
@@ -115,16 +123,6 @@ class ViewController: UIViewController {
         totalScore = 0
         totalRounds = 0
         startNewRound()
-        
-        
-        // To animate a crossfade when starting a new round
-        let transition = CATransition()
-        transition.type =  CATransitionType.fade
-        transition.duration = 1
-        
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-        view.layer.add(transition, forKey: nil)
-        
     }
     
 }
