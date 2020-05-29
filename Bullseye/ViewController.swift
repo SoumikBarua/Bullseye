@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         startNewGame()
         
+        // Assignn graphics to the slider
         let thumbImageNormal = UIImage(named: "SliderThumb-Normal")!
         slider.setThumbImage(thumbImageNormal, for: .normal)
         
@@ -43,6 +44,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showAlert() {
+        // Whatever the current value is, determine the distance from the target
+        // Assign points based on how close they were
         let difference = abs(targetValue - currentValue)
         var points = 100 - difference
         
@@ -71,8 +74,12 @@ class ViewController: UIViewController {
         
         //let message = "The value of the slider is \(currentValue)" + "\nThe target value is \(targetValue)"
         
+        // Intiailize a new alert controller
         let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
         
+        
+        // Add the Ok button alert action to the alert controller, and tie the starting of a new
+        // round to pressing of the button, otherwise it executes asynchronously
         let action = UIAlertAction(title: "OK", style: .default, handler: { _ in self.startNewRound()})
         
         alert.addAction(action)
@@ -82,6 +89,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sliderMoved(_ slider: UISlider){
+        // Whenever the slider moves, assign the updated slider value
         currentValue = lroundf(slider.value)
     }
     
@@ -95,6 +103,7 @@ class ViewController: UIViewController {
         updateLabels()
     }
     
+    // Update the labels whenever the values update
     func updateLabels() {
         targetLabel.text = String(targetValue)
         scoreLabel.text = String(totalScore)
@@ -106,6 +115,16 @@ class ViewController: UIViewController {
         totalScore = 0
         totalRounds = 0
         startNewRound()
+        
+        
+        // To animate a crossfade when starting a new round
+        let transition = CATransition()
+        transition.type =  CATransitionType.fade
+        transition.duration = 1
+        
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        view.layer.add(transition, forKey: nil)
+        
     }
     
 }
