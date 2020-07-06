@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "327F7F9824777ECD00DA0758"
-               BuildableName = "Bullseye.app"
+               BuildableName = "Bull&apos;s Eye.app"
                BlueprintName = "Bullseye"
                ReferencedContainer = "container:Bullseye.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "327F7F9824777ECD00DA0758"
-            BuildableName = "Bullseye.app"
+            BuildableName = "Bull&apos;s Eye.app"
             BlueprintName = "Bullseye"
             ReferencedContainer = "container:Bullseye.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "327F7F9824777ECD00DA0758"
-            BuildableName = "Bullseye.app"
+            BuildableName = "Bull&apos;s Eye.app"
             BlueprintName = "Bullseye"
             ReferencedContainer = "container:Bullseye.xcodeproj">
          </BuildableReference>
